@@ -27,7 +27,7 @@ client.on('messageCreate', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const commandName = args.shift();
     const command = client.commands.get(commandName);
-    if(!command) return message.reply({ content: "That command doesn't exist!"});
+    if(!command) return message.reply({ content: "Check your spelling before sending."});
     command.run(client, message, args, ran);
   }
 });
