@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 let app = express();
-var author;
+let msg;
 let verify = require('./module/verify.js');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
@@ -14,14 +14,16 @@ function listen(port, clnt) {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views/home.html'));
 });
-function ran(client, message) {
+function ran(message) {
   app.get(`/${message.author.id}`, (req, res) => {
+    msg = message;
+    console.log(message.author.username);
     res.sendFile(path.join(__dirname, 'views/index.html'));
-    author = message.author;
   });
   app.post('/captcha', (req, res) => {
     if (req.body.o == req.body.c) {
-      verify(client, message, author);
+      console.log(msg.author.username);
+      verify(msg);
       res.sendFile(path.join(__dirname, 'views/final.html'));
     } else {
       res.sendFile(path.join(__dirname, 'views/error.html'));
