@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+var favicon = require('serve-favicon');
 let app = express();
 let verify = require('./module/verify.js');
 app.use(express.static(path.join(__dirname, 'public')));
