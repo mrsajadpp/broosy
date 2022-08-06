@@ -31,5 +31,5 @@ client.on('messageCreate', message => {
     command.run(client, message, args, ran);
   }
 });
-listen(port,client,msg);
+listen(port,client);
 client.login(process.env.TOKEN);
