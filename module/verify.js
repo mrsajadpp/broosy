@@ -2,7 +2,7 @@ function verify(client, message) {
   let msg = message;
   if (msg.guild.roles.cache.find(r => r.name === "familiar") && msg.guild.roles.cache.find(r => r.name === "stranger")) {
     if (msg.member.roles.cache.find(r => r.name === "familiar")) {
-      msg.author.send('You already verified.');
+      msg.author.send('You already verified.').catch(console.error);
       client = null;
       message = null;
     } else {
@@ -10,7 +10,7 @@ function verify(client, message) {
      let rm = msg.guild.roles.cache.find(r => r.name === "stranger");
       msg.member.roles.add(role).catch(console.error);
       msg.member.roles.remove(rm).catch(console.error);
-      msg.author.send('<@'+msg.author.id+'>, Succesfully verified.');
+      msg.author.send('<@'+msg.author.id+'>, Succesfully verified.').catch(console.error);
       client = null;
       message = null;
     }
