@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 let app = express();
 let verify = require('./module/verify.js');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, 'public/img', 'favicon.png')))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 function listen(port, clnt, msg) {
