@@ -1,17 +1,17 @@
-function verify(client, message) {
-  let msg = message;
-  if (msg.guild.roles.cache.find(r => r.name === "familiar") && msg.guild.roles.cache.find(r => r.name === "stranger")) {
-    if (msg.member.roles.cache.find(r => r.name === "familiar")) {
-      msg.author.send('You already verified.').catch(console.error);
+function verify(msg) {
+  let message = msg;
+  if (message.guild.roles.cache.find(r => r.name === "familiar") && message.guild.roles.cache.find(r => r.name === "stranger")) {
+    if (message.member.roles.cache.find(r => r.name === "familiar")) {
+      message.author.send('You already verified.').catch(console.error);
     } else {
-     let role = msg.guild.roles.cache.find(r => r.name === "familiar");
-     let rm = msg.guild.roles.cache.find(r => r.name === "stranger");
-      msg.member.roles.add(role).catch(console.error);
-      msg.member.roles.remove(rm).catch(console.error);
-      msg.author.send('<@'+msg.author.id+'>, Succesfully verified.').catch(console.error);
+     let role = message.guild.roles.cache.find(r => r.name === "familiar");
+     let rm = message.guild.roles.cache.find(r => r.name === "stranger");
+      message.member.roles.add(role).catch(console.error);
+      message.member.roles.remove(rm).catch(console.error);
+      message.author.send('<@'+message.author.id+'>, Succesfully verified.').catch(console.error);
     }
   } else {
-    msg.channel.send("Oops!. can't find familiar and stranger roles.").catch(console.error);
+    message.channel.send("Oops!. can't find familiar and stranger roles.").catch(console.error);
   }
 }
 module.exports = verify;
