@@ -2,7 +2,7 @@ const discord = require('discord.js');
 const fs = require('fs');
 const path = require('path');
 let client = new discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
-let port = 3000;
+let port = process.env.PORT;
 let prefix = ':';
 let { listen, ran } = require('./server.js');
 client.on('ready', () => {
@@ -31,4 +31,4 @@ client.on('messageCreate', message => {
   }
 });
 listen(port,client);
-client.login('OTk2NjUxNDkzMDY1MjMyNDA1.GaaDoy.-W8TwU3Yv9CBxc28ly4gIcMv77zTrlJVKQqMoI');
+client.login(process.env.TOKEN);
