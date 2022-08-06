@@ -3,6 +3,7 @@ const path = require('path');
 let app = express();
 let verify = require('./module/verify.js');
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 function listen(port, clnt, msg) {
