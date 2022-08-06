@@ -1,9 +1,19 @@
 function verify(client, message, author) {
   var msg = message;
   var auth = author;
-  var role = msg.guild.roles.cache.find(r => r.name === "familiar");
-  msg.member.roles.add(role).catch(console.error);
-  let rm = msg.guild.roles.cache.find(r => r.name === "stranger");
-  msg.member.roles.remove(rm).catch(console.error);
+  var role;
+  var rm;
+  if (msg.guild.roles.cache.find(r => r.name === "familiar") && msg.guild.roles.cache.find(r => r.name === "stranger")) {
+    if (msg.member.roles.cache.find(r => r.name === "familiar")) {
+      msg.author.send('You already verified.');
+    } else {
+      role = msg.guild.roles.cache.find(r => r.name === "familiar");
+      rm = msg.guild.roles.cache.find(r => r.name === "stranger");
+      msg.member.roles.add(role).catch(console.error);
+      msg.member.roles.remove(rm).catch(console.error);
+    }
+  } else {
+    message.channel.send("Oops!. can't find familiar and stranger roles.");
+  }
 }
 module.exports = verify;
