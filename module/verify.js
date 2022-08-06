@@ -11,9 +11,10 @@ function verify(client, message, author) {
       rm = msg.guild.roles.cache.find(r => r.name === "stranger");
       msg.member.roles.add(role).catch(console.error);
       msg.member.roles.remove(rm).catch(console.error);
+      msg.author.send('<@'+msg.author.id+'>, Succesfully verified.');
     }
   } else {
-    message.channel.send("Oops!. can't find familiar and stranger roles.");
+    msg.channel.send("Oops!. can't find familiar and stranger roles.");
   }
 }
 module.exports = verify;
