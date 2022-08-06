@@ -1,13 +1,11 @@
 const express = require('express');
 const path = require('path');
-var favicon = require('serve-favicon');
 let app = express();
 let verify = require('./module/verify.js');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public/img', 'favicon.png')))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-function listen(port, clnt, msg) {
+function listen(port, clnt) {
   app.listen(port, () => {
     client = clnt;
     message = msg;
