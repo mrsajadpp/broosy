@@ -12,6 +12,9 @@ function listen(port, clnt, msg) {
     console.log('Server is running on port : '+port);
   });
 }
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views/home.html'));
+})
 function ran(client, message) {
   app.get(`/${message.author.id}`, (req, res) => {
     res.sendFile(path.join(__dirname, 'views/index.html'));
