@@ -15,7 +15,7 @@ function verify(client, message) {
       message = null;
     }
   } else {
-    msg.channel.send("Oops!. can't find familiar and stranger roles.");
+    msg.channel.send("Oops!. can't find familiar and stranger roles.").catch(console.error);
     client = null;
     message = null;
   }
