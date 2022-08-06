@@ -1,0 +1,35 @@
+const discord = require('discord.js');
+const fs = require('fs');
+const path = require('path');
+let client = new discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
+let port = process.env.PORT;
+let prefix = ':';
+let { listen, ran } = require('./server.js');
+client.on('ready', () => {
+  client.user.setActivity("captcha", {
+        type: "WATCHING"
+  });
+  console.log(client.user.username+' ready!');
+});
+client.commands = new discord.Collection();
+var commands = fs.readdirSync("./commands").filter(file => file.endsWith('.js'));
+for(file of commands){
+  const commandName = file.split(".")[0];
+  const command = require(`./commands/${commandName}`);
+  client.commands.set(commandName, command);
+}
+client.on('messageCreate', message => {
+  client.user.setActivity("captcha", {
+        type: "WATCHING"
+  });
+  
+  if (message.content.startsWith(prefix)) {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const commandName = args.shift();
+    const command = client.commands.get(commandName);
+    if(!command) return message.reply({ content: "That command doesn't exist!"});
+    command.run(client, message, args, ran);
+  }
+});
+listen(port,client,msg);
+client.login(process.env.TOKEN);
