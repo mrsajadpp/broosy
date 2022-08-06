@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "discord.js": "^13.9.2",
+    "express": "^4.18.1",
+    "fs": "^0.0.1-security",
+    "nodemon": "^2.0.19",
+    "path": "^0.12.7"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "name": "broosy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrsajadpp/broosy.git"
+  },
+  "author": "sajad pp",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mrsajadpp/broosy/issues"
+  },
+  "homepage": "https://github.com/mrsajadpp/broosy#readme",
+  "description": ""
+}
