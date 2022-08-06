@@ -14,7 +14,7 @@ function listen(port, clnt, msg) {
 }
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views/home.html'));
-})
+});
 function ran(client, message) {
   app.get(`/${message.author.id}`, (req, res) => {
     res.sendFile(path.join(__dirname, 'views/index.html'));
