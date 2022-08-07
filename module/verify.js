@@ -2,7 +2,7 @@ function verify(msg) {
   let message = msg;
   if (message.guild.roles.cache.find(r => r.name === "familiar") && message.guild.roles.cache.find(r => r.name === "stranger")) {
     if (message.member.roles.cache.find(r => r.name === "familiar")) {
-      message.author.send('You already verified.').catch(console.error);
+      message.author.send('<@'+message.author.id+'>, You already verified.').catch(console.error);
     } else {
      let role = message.guild.roles.cache.find(r => r.name === "familiar");
      let rm = message.guild.roles.cache.find(r => r.name === "stranger");
