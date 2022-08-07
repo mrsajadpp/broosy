@@ -17,12 +17,10 @@ app.get('/', (req, res) => {
 function ran(message) {
   app.get(`/${message.author.id}`, (req, res) => {
     msg = message;
-    console.log(message.author.username);
     res.sendFile(path.join(__dirname, 'views/index.html'));
   });
   app.post('/captcha', (req, res) => {
     if (req.body.o == req.body.c) {
-      console.log(msg.author.username);
       verify(msg);
       res.sendFile(path.join(__dirname, 'views/final.html'));
     } else {
