@@ -8,8 +8,7 @@ function verify(msg) {
      let rm = message.guild.roles.cache.find(r => r.name === "stranger");
       message.member.roles.add(role).catch(console.error);
       message.member.roles.remove(rm).catch(console.error);
-      message.author.send('<@'+message.author.id+'>, Succesfully verified.').catch(console.error);
-      message.channel.send('<@'+message.author.id+'>, ✅ Succesfully verified.').catch(console.error);
+      message.author.send('<@'+message.author.id+'>, ✅ Succesfully verified.').catch(console.error);
     }
   } else {
     message.channel.send("Oops!. can't find familiar and stranger roles.").catch(console.error);
