@@ -11,7 +11,7 @@ function verify(msg) {
       message.author.send('<@'+message.author.id+'>, ✅ Succesfully verified.').catch(console.error);
     }
   } else {
-    message.channel.send("Oops!. can't find familiar and stranger roles.").catch(console.error);
+    message.channel.send("🤯 Oops!. can't find familiar and stranger roles.").catch(console.error);
   }
 }
 module.exports = verify;
